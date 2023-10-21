@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
-//#include <cstring>
+
+// The function returns an integer indicating the startting location of the first occurrence
+// of the second parameter string within the first parameter string.
 
 int strPos(std::string s1, std::string s2){
     int len1, len2;
