@@ -2,14 +2,15 @@
 #include <stdio.h>
 #include <string.h>
 
-void myMemCpy(void* dest, void* src, size_t n){
+void myMemCpy(void* dest, const void* src, size_t n){
     // Typecast src and dest to (char*)
-    char* csrc = (char*)src;
-    char* cdest = (char*)dest;
+    const char* csrc = src;
+    char* cdest = dest;
 
     // Copy contents of src[] to dest[]
-    for(int i=0; i<n; i++)
+    for(size_t i=0; i<n; i++){
         cdest[i] = csrc[i];
+    }
 }
 
 int main() {
