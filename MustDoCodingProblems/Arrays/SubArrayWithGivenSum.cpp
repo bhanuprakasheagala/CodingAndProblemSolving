@@ -58,8 +58,6 @@ int main()
         long long s;
         cin>>n>>s;
         vector<int>arr(n);
-        // int arr[n];
-        const int mx = 1e9;
         for(int i=0;i<n;i++)
         {
             cin>>arr[i];
