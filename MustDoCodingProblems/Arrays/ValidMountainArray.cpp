@@ -42,12 +42,18 @@ bool isValidMountain1(const std::vector<int>& input, const int n) {
 bool isValidMountain2(const std::vector<int>& input, int n) {
     int left = 0;
     int right = n-1;
+
+    // Traverse up the mountain from left to right
     while(left < (n-1) && input[left] < input[left+1]) {
         left += 1;
     }
+
+    // Traverse up the mountain from right to left
     while(right > 0 && input[right] < input[right-1]) {
         right -= 1;
     }
+
+    // Check if both pointers meet at the same peak
     if((left > 0 ) && (left == right) && (right < (n-1))) {
         return true;
     }
