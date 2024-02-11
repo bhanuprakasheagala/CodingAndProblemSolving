@@ -1,11 +1,13 @@
 #include <iostream>
 #include <vector>
-void merge(std::vector<int>& arr, int low, int mid, int high) {
+
+template <typename T>
+void merge(std::vector<T>& arr, int low, int mid, int high) {
     int m = mid - low + 1;
     int n = high - mid;
 
-    std::vector<int> L(m);
-    std::vector<int> R(n);
+    std::vector<T> L(m);
+    std::vector<T> R(n);
 
     for(int i=0; i<m; ++i)
         L[i] = arr[low+i];
@@ -29,7 +31,9 @@ void merge(std::vector<int>& arr, int low, int mid, int high) {
         arr[k++] = R[j++];
     }
 }
-void mergeSort(std::vector<int>& arr, int low, int high) {
+
+template<typename T>
+void mergeSort(std::vector<T>& arr, int low, int high) {
     if(low < high) {
         int mid = low + (high - low)/2;
         mergeSort(arr, low, mid);
@@ -38,7 +42,8 @@ void mergeSort(std::vector<int>& arr, int low, int high) {
     }
 }
 
-void Sort(std::vector<int>& arr, int n) {
+template<typename T>
+void Sort(std::vector<T>& arr, int n) {
     int l = 0;
     int r = n-1;
     mergeSort(arr, l, r);
@@ -48,12 +53,19 @@ void Sort(std::vector<int>& arr, int n) {
     std::cout << '\n';
 }
 
+template<typename T>
+void readInputArray(std::vector<T>& arr, int n) {
+    for(int i=0; i<n; ++i)
+        std::cin >> arr[i];
+}
+
 int main() {
     int n;
     std::cin >> n;
-    std::vector<int> arr(n);
-    for(int i=0; i<n; ++i) {
-        std::cin >> arr[i];
-    }
-    Sort(arr, n);
+    std::vector<int> arr1(n);
+    std::vector<float> arr2(n);
+    readInputArray(arr1, n);
+    readInputArray(arr2, n);
+    Sort(arr1, n);
+    Sort(arr2, n);
 }
