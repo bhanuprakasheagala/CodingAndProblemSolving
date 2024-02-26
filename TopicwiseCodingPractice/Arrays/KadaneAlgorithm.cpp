@@ -9,17 +9,13 @@ if it is greater than max_so_far
 #include <iostream>
 
 int maxSubArraySum(int arr[], int size) {
-    int max_sum_so_far = 0, max_sum_ending_here = 0;
+    int max_sum_so_far = INT_MIN, max_sum_ending_here = 0;
     for(int i=0; i<size; ++i) {
         max_sum_ending_here += arr[i];
+        if(max_sum_so_far < max_sum_ending_here)
+            max_sum_so_far = max_sum_ending_here;
         if(max_sum_ending_here < 0)
             max_sum_ending_here = 0;
-        
-        /* Do not compare for all elements.
-        Compare only when max_ending_here > 0 */
-
-        else if(max_sum_so_far < max_sum_ending_here)
-            max_sum_so_far = max_sum_ending_here;
     }
     return max_sum_so_far;
 }

@@ -14,7 +14,7 @@ int moneyChange(int money) {
     // Initialize count for each denomination
     int count[] = {0, 0, 0};
 
-    // Iterate throigh each denomination
+    // Iterate through each denomination
     for(int i=0; i<3; ++i) {
         // Count how many coins of this denomination we can take
         count[i] = money/denominations[i];
