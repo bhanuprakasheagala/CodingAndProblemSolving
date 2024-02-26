@@ -14,7 +14,7 @@ int main() {
     for(int i=0; i<n; ++i) {
         std::cin>>arr[i];
     }
-    int best = 0;
+    int best = INT_MIN;
     int sum = 0;
 
     for(int k=0; k<n; ++k) {
