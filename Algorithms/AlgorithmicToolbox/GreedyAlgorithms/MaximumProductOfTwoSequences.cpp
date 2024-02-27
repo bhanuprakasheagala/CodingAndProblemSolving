@@ -22,36 +22,63 @@ Input:
 Output:
 79
 79=7·9+2·2+3·4.
+
+Constraints. 1 ≤ n ≤ 103; 0 ≤ pricei,clicksi ≤ 105 for all 1 ≤ i ≤ n.
 */
 
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
-int main()
-{
+using namespace std;
+
+long long maxDotProduct(vector<int>& prices, vector<int>& clicks) {
+    int n = prices.size();
+
+    // Sort prices and clicks in non-decreasing order
+    sort(prices.begin(), prices.end());
+    sort(clicks.begin(), clicks.end());
+
+    long long maxDot = 0;
+    for (int i = 0; i < n; ++i) {
+        maxDot += (long long)prices[i] * clicks[i];
+    }
+
+    return maxDot;
+}
+
+int main() {
     int n;
-    std::cin >> n;
-    std::vector<int> prices;
-    std::vector<int> clicks;
+    cin >> n;
 
-    for(int i=0; i<n; ++i) {
-        int price;
-        std::cin >> price;
-        prices.push_back(price);
+    // Input validation for n
+    if (n < 1 || n > 1000) {
+        //cout << "Invalid input for n" << endl;
+        return 1;
     }
-    for(int i=0; i<n; ++i) {
-        int click;
-        std::cin >> click;
-        clicks.push_back(click);
-    }
-        std::sort(prices.begin(), prices.end());
-        std::sort(clicks.begin(), clicks.end());
 
-        int res = 0;
-        for(int i=0; i<n; ++i) {
-            res += prices[i]*clicks[i];
+    vector<int> prices(n), clicks(n);
+
+    // Input validation and reading prices
+    for (int i = 0; i < n; ++i) {
+        cin >> prices[i];
+        if (prices[i] < 0 || prices[i] > 100000) {
+            //cout << "Invalid input for prices" << endl;
+            return 1;
         }
-        std::cout << res;
+    }
+
+    // Input validation and reading clicks
+    for (int i = 0; i < n; ++i) {
+        cin >> clicks[i];
+        if (clicks[i] < 0 || clicks[i] > 100000) {
+            //cout << "Invalid input for clicks" << endl;
+            return 1;
+        }
+    }
+
+    long long maxDot = maxDotProduct(prices, clicks);
+    cout << /*"Maximum dot product: " << */maxDot << endl;
 
     return 0;
 }
