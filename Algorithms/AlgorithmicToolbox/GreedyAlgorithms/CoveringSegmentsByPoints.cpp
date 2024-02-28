@@ -60,3 +60,41 @@ int main()
 
     return 0;
 }
+
+/*
+Example:
+4
+2 5
+1 3
+3 6
+7 8
+
+1. Sort the segments based on their right endpoints:
+After sorting, the segments would be in the following order:
+Segment 2: [1, 3]
+Segment 1: [2, 5]
+Segment 3: [3, 6]
+Segment 4: [7, 8]
+
+2. Start with the right endpoint of the first segment, which is 3.
+Add point 3 to the list of points.
+
+3 .Move to the next segment.
+The left endpoint of Segment 1 is 2, which is less than the current point (3). So, no new point is added.
+
+4. Move to the next segment.
+The left endpoint of Segment 3 is 3, which is equal to the current point (3). No new point is added.
+
+5. Move to the next segment.
+The left endpoint of Segment 4 is 7, which is greater than the current point (3).
+Add point 6 (the right endpoint of Segment 3) to the list of points.
+
+6. The algorithm finishes traversing all segments.
+
+Finally, we find that the minimum number of points needed to cover all segments is 2,
+and the points are {3, 6}.
+
+Output:
+2
+3 6
+*/
