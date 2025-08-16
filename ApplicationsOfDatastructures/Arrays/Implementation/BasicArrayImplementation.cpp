@@ -31,7 +31,6 @@ int main() {
     for(int i=0; i<arr.getSize(); ++i) {
         std::cout << arr[i] << " ";
     }
-    //std::cout << arr[12] << "::::\n";
     std::cout << '\n';
 
     return 0;
