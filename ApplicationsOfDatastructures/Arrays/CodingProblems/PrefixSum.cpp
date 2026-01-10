@@ -3,7 +3,6 @@
 
 
 int main() {
-
     int n;
     std::cout << "Enter the number of elements in the array: ";
     std::cin >> n;
@@ -13,13 +12,14 @@ int main() {
     for (int i = 0; i < n; ++i) {
         std::cin >> arr[i];
     }
-    std::vector<int> prefixSum(n);
-    prefixSum[0] = arr[0];
+
+    // In-place computation of prefix sums
     for (int i = 1; i < n; ++i) {
-        prefixSum[i] = prefixSum[i - 1] + arr[i];
+        arr[i] = arr[i - 1] + arr[i];
     }
+
     std::cout << "Prefix Sum Array: ";
-    for (const auto& sum : prefixSum) {
+    for (const auto& sum : arr) {
         std::cout << sum << " ";
     }
     std::cout << std::endl;
